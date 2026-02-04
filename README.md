@@ -45,24 +45,27 @@ You may use any one of the following:
 1️⃣ Install Splunk
 
 1. Download link `https://www.splunk.com/en_us/download/previous-releases.html`
-2. 1️⃣ Download Splunk (Linux .deb)
+   
+3. 1️⃣ Download Splunk (Linux .deb)
     `wget -O splunk-9.2.4-c103a21bb11d-linux-2.6-amd64.deb "https://download.splunk.com/products/splunk/releases/9.2.4/linux/splunk-9.2.4-c103a21bb11d-linux-2.6-amd64.deb"`
-4. 2️⃣ Install Splunk
+   
+5. 2️⃣ Install Splunk
    `sudo dpkg -i splunk.deb`
-   If you get dependency errors: `sudo apt --fix-broken install -y`
+   - If you get dependency errors: - `sudo apt --fix-broken install -y`
 
 6. 3️⃣ Start Splunk
  `sudo /opt/splunk/bin/splunk start`
-✔ Accept the license
-✔ Set admin username & password
+- ✔ Accept the license
+- ✔ Set admin username & password
 
 8. 4️⃣ Enable Splunk at Boot (recommended)
   `sudo /opt/splunk/bin/splunk enable boot-start`
+
 10. 5️⃣ Access Splunk Web
-    - Open your browser: `http://localhost:8000`
-    - 
+    - Open your browser:  `http://localhost:8000`
+      
 12. 6️⃣ Check Splunk Status (optional)
-`sudo /opt/splunk/bin/splunk status`
+    `sudo /opt/splunk/bin/splunk status`
 
 
 
