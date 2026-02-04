@@ -1,53 +1,53 @@
-# Task_12-Log-Monitoring-Analysis
-🔍 Splunk Log Analysis & Incident Detection Project
-📌 Project Overview
+
+# 🔍 Splunk Log Analysis & Incident Detection Project
+# 📌 Project Overview
 
 This project focuses on log analysis and incident detection using Splunk only. The goal is to simulate a real-world SOC (Security Operations Center) task where logs are ingested, analyzed, correlated, and turned into actionable security insights.
 
 By completing this project, you will demonstrate hands-on experience with Splunk fundamentals, SIEM concepts, and security monitoring — ideal for a cybersecurity portfolio.
 
-🎯 Objectives
+# 🎯 Objectives
+- How to install splunk in kali
+- How to create splunk dashboard
+- Learn SIEM fundamentals using Splunk
+- Understand different log types
+- Analyze authentication-related logs
+- Identify failed login attempts
+- Detect anomalies and suspicious behavior
+- Correlate security events
+- Create alerts
+- Document findings in a professional report
 
-Understand different log types
+# 🛠 Tools Used
 
-Analyze authentication-related logs
+- Splunk Enterprise / Splunk Free (Primary & only tool)
 
-Identify failed login attempts
+- ⚠️ No external tools (Linux CLI, Event Viewer, etc.) are used. All analysis is done inside Splunk.
 
-Detect anomalies and suspicious behavior
-
-Correlate security events
-
-Learn SIEM fundamentals using Splunk
-
-Create alerts
-
-Document findings in a professional report
-
-🛠 Tools Used
-
-Splunk Enterprise / Splunk Free (Primary & only tool)
-
-⚠️ No external tools (Linux CLI, Event Viewer, etc.) are used. All analysis is done inside Splunk.
-
-📂 Log Sources
+## 📂 Log Sources
 
 You may use any one of the following:
 
-Linux authentication logs (auth.log)
+- Linux authentication logs (auth.log)
 
-Windows Security Event Logs
+- Windows Security Event Logs
 
-Sample logs from Splunk (recommended for beginners)
+- Sample logs from Splunk (recommended for beginners)
 
-Recommended Sample Data
+- Recommended Sample Data
 
-tutorialdata.zip (Splunk official sample data)
+- tutorialdata.zip (Splunk official sample data)
 
-Windows Security Logs (Event IDs 4624, 4625)
+- Windows Security Logs (Event IDs 4624, 4625)
 
-⚙️ Project Setup
+## ⚙️ Project Setup
+
 1️⃣ Install Splunk
+
+- Download link `https://www.splunk.com/en_us/download/previous-releases.html`
+- .deb `wget -O splunk-9.2.4-c103a21bb11d-linux-2.6-amd64.deb "https://download.splunk.com/products/splunk/releases/9.2.4/linux/splunk-9.2.4-c103a21bb11d-linux-2.6-amd64.deb"`
+![Uploading image.png…]()
+
 
 Download Splunk Free or Splunk Enterprise Trial
 
