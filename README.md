@@ -1,55 +1,67 @@
-
 # 🔍 Splunk Log Analysis & Incident Detection Project
 
-# 📌 Project Overview
+---
 
-This project focuses on log analysis and incident detection using Splunk only. The goal is to simulate a real-world SOC (Security Operations Center) task where logs are ingested, analyzed, correlated, and turned into actionable security insights.
+## 📌 Project Overview
 
-By completing this project, you will demonstrate hands-on experience with Splunk fundamentals, SIEM concepts, and security monitoring — ideal for a cybersecurity portfolio.
+This project focuses on **log analysis and incident detection using Splunk only**.  
+It simulates a real-world **SOC (Security Operations Center)** workflow where logs are ingested, analyzed, correlated, visualized, and transformed into actionable security insights.
 
-# 🎯 Objectives
-- How to install splunk in kali
-- How to create splunk dashboard
-- Learn SIEM fundamentals using Splunk
+This project demonstrates hands-on experience with:
+- Splunk fundamentals
+- SIEM concepts
+- Security monitoring & incident detection  
+Ideal for a **cybersecurity portfolio / academic submission**.
+
+---
+
+## 🎯 Objectives
+
+- Install Splunk in Kali Linux
+- Upload and analyze logs using Splunk
+- Create security dashboards
+- Learn SIEM fundamentals
 - Understand different log types
 - Analyze authentication-related logs
 - Identify failed login attempts
 - Detect anomalies and suspicious behavior
 - Correlate security events
 - Create alerts
-- Document findings in a professional report
+- Document findings professionally
 
-# 🛠 Tools Used
+---
 
-- Splunk Enterprise / Splunk Free (Primary & only tool)
+## 🛠 Tools Used
 
-- ⚠️ No external tools (Linux CLI, Event Viewer, etc.) are used. All analysis is done inside Splunk.
+- **Splunk Enterprise / Splunk Free** (Primary & only tool)
+
+⚠️ No external tools (Linux CLI, Event Viewer, etc.) are used.  
+All analysis is done **inside Splunk only**.
+
+---
 
 ## 📂 Log Sources
 
 You may use any one of the following:
 
-- Linux authentication logs (auth.log)
-
+- Linux authentication logs (`auth.log`)
 - Windows Security Event Logs
+- Splunk sample logs (recommended for beginners)
 
-- Sample logs from Splunk (recommended for beginners)
+### Recommended Sample Data
+- `tutorialdata.zip` (Official Splunk sample data)
+- Windows Security Logs (Event IDs: 4624, 4625)
 
-- Recommended Sample Data
-
-- tutorialdata.zip (Splunk official sample data)
-
-- Windows Security Logs (Event IDs 4624, 4625)
+---
 
 ## ⚙️ Project Setup
 
-1️⃣ Install Splunk
+### 1️⃣ Install Splunk in Kali Linux
 
-1. Download link
-   - `https://www.splunk.com/en_us/download/previous-releases.html`
-   
-3. 1️⃣ Download Splunk (Linux .deb)
-   -  `wget -O splunk-9.2.4-c103a21bb11d-linux-2.6-amd64.deb "https://download.splunk.com/products/splunk/releases/9.2.4/linux/splunk-9.2.4-c103a21bb11d-linux-2.6-amd64.deb"`
+#### Download Splunk
+``bash
+wget -O splunk-9.2.4-linux.deb https://download.splunk.com/products/splunk/releases/9.2.4/linux/splunk-9.2.4-c103a21bb11d-linux-2.6-amd64.deb
+
    
 5. 2️⃣ Install Splunk
    `sudo dpkg -i splunk.deb`
@@ -62,19 +74,36 @@ You may use any one of the following:
   
 ![image](https://github.com/NATTOMR/Task_12-Log-Monitoring-Analysis-by-using-splunk/blob/main/images/splunk%20start.png)
 
-8. 4️⃣ Enable Splunk at Boot (recommended)
+7. 4️⃣ Enable Splunk at Boot (recommended)
   `sudo /opt/splunk/bin/splunk enable boot-start`
 
-10. 5️⃣ Access Splunk Web
+8. 5️⃣ Access Splunk Web
     - Open your browser:  `http://localhost:8000`
       
-12. 6️⃣ Check Splunk Status (optional)
+9. 6️⃣ Check Splunk Status (optional)
     `sudo /opt/splunk/bin/splunk status`
 
 
 ![image](https://github.com/NATTOMR/Task_12-Log-Monitoring-Analysis-by-using-splunk/blob/main/images/splunk%20dashboard.png)
 
-  
+  # 📥 Upload Logs to Splunk
+
+1. Go to Settings → Add Data
+2.  Select Upload
+3.  Choose log files
+4.   Assign appropriate Source Type
+
+- linux_auth
+
+- linux_secure
+
+- WinEventLog:Security
+
+![image](https://github.com/NATTOMR/Task_12-Log-Monitoring-Analysis-by-using-splunk/blob/main/images/new%20dashboard-1.jpeg)
+![image](https://github.com/NATTOMR/Task_12-Log-Monitoring-Analysis-by-using-splunk/blob/main/images/new%20dashboard-2.jpeg)
+![image](https://github.com/NATTOMR/Task_12-Log-Monitoring-Analysis-by-using-splunk/blob/main/images/new%20dashboard-3.jpeg)
+![image](https://github.com/NATTOMR/Task_12-Log-Monitoring-Analysis-by-using-splunk/blob/main/images/new%20dashboard-4.jpeg)
+![image](https://github.com/NATTOMR/Task_12-Log-Monitoring-Analysis-by-using-splunk/blob/main/images/new%20dashboard-5.jpeg)
 
 # How to create splunk dashboard
 
@@ -109,150 +138,90 @@ Click **Save**
 
 ---
 
-## Step : Add More Panels
-
-Repeat the process to build a complete dashboard.
-
----
-
-### Example 1: Login Attempts (Auth Logs)
-
-**SPL Query**
-``spl
+## Add Panels to Dashboard
+Panel 1: Login Attempts (Auth Logs)
 `index=* sourcetype=linux_secure OR sourcetype=linux_auth
 | stats count by user`
 
+
+- Visualization: Bar Chart / Table
+
 - Save → Save As Dashboard Panel
 
-- Choose Existing Dashboard
+- Select Existing Dashboard
 
-- Select Kali Security Dashboard
+- Choose Kali Security Dashboard
 
-## 2️⃣ Upload Logs
+## Panel 2: Top Source IPs
+`index=* | stats count by src_ip | sort -count`
 
-<HEAD
-Go to Settings → Add Data → Upload
 
-- Select log files
+- Visualization: Table / Bar Chart
 
-- Assign a source type (e.g., linux_secure, WinEventLog:Security)
+- Save to same dashboard
 
-![image](https://github.com/NATTOMR/Task_12-Log-Monitoring-Analysis-by-using-splunk/blob/main/images/new%20dashboard-1.jpeg)
-![image](https://github.com/NATTOMR/Task_12-Log-Monitoring-Analysis-by-using-splunk/blob/main/images/new%20dashboard-2.jpeg)
-![image](https://github.com/NATTOMR/Task_12-Log-Monitoring-Analysis-by-using-splunk/blob/main/images/new%20dashboard-3.jpeg)
-![image](https://github.com/NATTOMR/Task_12-Log-Monitoring-Analysis-by-using-splunk/blob/main/images/new%20dashboard-4.jpeg)
-![image](https://github.com/NATTOMR/Task_12-Log-Monitoring-Analysis-by-using-splunk/blob/main/images/new%20dashboard-5.jpeg)
 
-# 🔎 Analysis Tasks (Step-by-Step)
- 1️⃣ Understand Log Types
+## 🔎 Analysis Tasks (Step-by-Step)
 
-### Identify fields such as:
+### 1️⃣ Understand Log Types
 
-- user
+Before analyzing data in Splunk, it is important to understand the types of logs available in Kali Linux and what security information they provide.
 
-- src_ip
+#### Common Log Types
 
-- action
+- **Authentication Logs**
+  - `linux_auth`, `linux_secure`
+  - Tracks login attempts, SSH access, sudo usage
+  - Useful for detecting brute-force attacks and unauthorized access
 
-- status
+- **System Logs**
+  - `syslog`
+  - Records system events, errors, service activity
+  - Useful for troubleshooting and system monitoring
 
-- EventCode
+- **Audit Logs**
+  - `linux_audit`
+  - Tracks executed commands, file access, privilege escalation
+  - Useful for insider threat detection and forensic analysis
 
-1. Example SPL:
+- **Network / Firewall Logs**
+  - May include logs from iptables, UFW, Suricata, or Zeek
+  - Useful for detecting suspicious IPs and malicious traffic
 
-`index=main | stats count by sourcetype`
-2. 2️⃣ Analyze Authentication Logs
+- **Splunk Internal Logs**
+  - `_internal`
+  - Monitors Splunk’s own health and performance
+  - Useful for SIEM reliability and troubleshooting
 
-`Focus on login-related events.`
->>>>>>> 19702be3823c286dea16f42566c9df2434ac0b14
+---
 
-`index=main `
-(login OR authentication)
+### 2️⃣ Identify High-Value Security Events
 
-<<<<<<< HEAD
-Assign a source type (e.g., linux_secure, WinEventLog:Security)
+Focus on events that indicate potential threats:
 
-Index: main
+- Failed login attempts
+- Repeated access from the same IP
+- Unauthorized command execution
+- Sudden spikes in log volume
+- Errors or warnings in system logs
 
-🔎 Analysis Tasks (Step-by-Step)
-1️⃣ Understand Log Types
+---
 
-Identify fields such as:
+### 3️⃣ Run Basic Analysis Queries
 
-user
+#### Failed SSH Login Analysis
+``spl
+`index=* "Failed password"
+| stats count by src_ip`
 
-src_ip
 
-action
+## User Login Activity
+`index=* sourcetype=linux_auth
+| stats count by user`
 
-status
-
-EventCode
-
-Example SPL:
-
-index=main | stats count by sourcetype
-2️⃣ Analyze Authentication Logs
-
-Focus on login-related events.
-=======
-- Go to Settings → Add Data → Upload
-
-- Select log files
-
-- Assign a source type (e.g., linux_secure, WinEventLog:Security)
-
-Index: main
-
-# 🔎 Analysis Tasks (Step-by-Step)
- 1️⃣ Understand Log Types
-
-### Identify fields such as:
-
-- user
-
-- src_ip
-
-- action
-
-- status
-
-- EventCode
-
-1. Example SPL:
-
-`index=main | stats count by sourcetype`
-2. 2️⃣ Analyze Authentication Logs
-
-`Focus on login-related events.`
->>>>>>> 2d12d3007859112b25b31432091bb1a6e7faa2d5
-
-index=main (login OR authentication)
-3️⃣ Identify Failed Logins
-index=main (failed OR failure)
-=======
-3. 3️⃣ Identify Failed Logins
-   
-`index=main (failed OR failure)
->>>>>>> 19702be3823c286dea16f42566c9df2434ac0b14
-| stats count by user, src_ip
-| sort -count`
-
-4. 4️⃣ Detect Anomalies
-
-Detect brute-force or suspicious behavior.
-
-`index=main failed
-| stats count by src_ip
-| where count > 5`
-
-5. 5️⃣ Correlate Events
-
-Correlate failed logins followed by successful logins.
-
-`index=main
-| transaction user maxspan=10m
-| search failed success`
+## Command Execution Monitoring
+`index=* sourcetype=linux_audit
+| stats count by comm`
 
 6. 6️⃣ SIEM Basics in Splunk
 
@@ -278,32 +247,33 @@ Example: Alert for multiple failed logins.
 
 - Action: Log event / Email (optional)
 
-
+# 📊 Final Dashboard Output
+![image]()
 # 📄 Deliverables
+
 # ✅ Log Analysis Report
 
-Include:
+- Include:
 
-Objective
+- Objective
+- 
+- Log sources
 
-Log sources
+- Key SPL queries
 
-Key SPL queries
+- Detected incidents
 
-Detected incidents
+- Screenshots
 
-Screenshots
+- Mitigation recommendations
 
-Mitigation recommendations
-
-🏁 Final Outcome
+# 🏁 Final Outcome
 
 By completing this project, you gain:
 
-Hands-on Splunk experience
+- Hands-on Splunk experience
 
-Incident detection skills
+- Incident detection skills
 
-SIEM fundamentals
+- SIEM fundamentals
 
-Portfolio-ready cybersecurity project
