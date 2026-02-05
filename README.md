@@ -44,14 +44,16 @@ You may use any one of the following:
 
 1️⃣ Install Splunk
 
-1. Download link `https://www.splunk.com/en_us/download/previous-releases.html`
+1. Download link
+   `https://www.splunk.com/en_us/download/previous-releases.html`
    
 3. 1️⃣ Download Splunk (Linux .deb)
     `wget -O splunk-9.2.4-c103a21bb11d-linux-2.6-amd64.deb "https://download.splunk.com/products/splunk/releases/9.2.4/linux/splunk-9.2.4-c103a21bb11d-linux-2.6-amd64.deb"`
    
 5. 2️⃣ Install Splunk
    `sudo dpkg -i splunk.deb`
-   - If you get dependency errors: - `sudo apt --fix-broken install -y`
+   - If you get dependency errors:
+      - `sudo apt --fix-broken install -y`
 
 6. 3️⃣ Start Splunk
  `sudo /opt/splunk/bin/splunk start`
@@ -79,34 +81,34 @@ You may use any one of the following:
 
 2️⃣ Upload Logs
 
-<<<<<<< HEAD
+<HEAD
 Go to Settings → Add Data → Upload
 
-Select log files
+- Select log files
 
-Assign a source type (e.g., linux_secure, WinEventLog:Security)
+- Assign a source type (e.g., linux_secure, WinEventLog:Security)
 
-Index: main
 
-🔎 Analysis Tasks (Step-by-Step)
-1️⃣ Understand Log Types
+## 🔎 Analysis Tasks (Step-by-Step)
 
-Identify fields such as:
+### 1️⃣ Understand Log Types
 
-user
+<Identify fields such as:
+- user
 
-src_ip
+- src_ip
 
-action
+- action
 
-status
+- status
 
-EventCode
+- EventCode
 
-Example SPL:
+- Example SPL:
 
-index=main | stats count by sourcetype
-2️⃣ Analyze Authentication Logs
+`index=main | stats count by sourcetype`
+
+### 2️⃣ Analyze Authentication Logs
 
 Focus on login-related events.
 =======
@@ -116,7 +118,6 @@ Focus on login-related events.
 
 - Assign a source type (e.g., linux_secure, WinEventLog:Security)
 
-Index: main
 
 # 🔎 Analysis Tasks (Step-by-Step)
  1️⃣ Understand Log Types
