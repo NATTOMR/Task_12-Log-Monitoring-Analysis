@@ -60,7 +60,7 @@ You may use any one of the following:
 
 #### Download Splunk
 ``bash
-wget -O splunk-9.2.4-linux.deb https://download.splunk.com/products/splunk/releases/9.2.4/linux/splunk-9.2.4-c103a21bb11d-linux-2.6-amd64.deb
+`wget -O splunk-9.2.4-linux.deb https://download.splunk.com/products/splunk/releases/9.2.4/linux/splunk-9.2.4-c103a21bb11d-linux-2.6-amd64.deb`
 
    
 5. 2️⃣ Install Splunk
