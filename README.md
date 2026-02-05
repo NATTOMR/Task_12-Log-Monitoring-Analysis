@@ -133,17 +133,11 @@ Go to Settings → Add Data → Upload
 
 - Assign a source type (e.g., linux_secure, WinEventLog:Security)
 
-
-### 2️⃣ Analyze Authentication Logs
-
-Focus on login-related events.
-=======
-- Go to Settings → Add Data → Upload
-
-- Select log files
-
-- Assign a source type (e.g., linux_secure, WinEventLog:Security)
-
+![image]()
+![image]()
+![image]()
+![image]()
+![image]()
 
 # 🔎 Analysis Tasks (Step-by-Step)
  1️⃣ Understand Log Types
