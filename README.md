@@ -78,8 +78,53 @@ You may use any one of the following:
 
 # How to create splunk dashboard
 
+# Kali Security Dashboard (Splunk)
 
-2️⃣ Upload Logs
+This guide explains how to create and manage a basic **Splunk dashboard** in a Kali Linux VM
+
+---
+
+## Option A: Create a New Dashboard
+
+- **Dashboard Title:** Kali Security Dashboard  
+- **Description:** Monitoring logs in Kali Linux  
+- **Dashboard ID:** Auto-filled by Splunk  
+- **Permissions:** Private (for now)
+
+Click **Save**
+
+## 🎉 Your first dashboard is created!
+
+---
+
+## Step : View Your Dashboard
+
+1. Click **Dashboards**
+2. Open **Kali Security Dashboard**
+3. You will see your first panel
+
+---
+
+## Step : Add More Panels
+
+Repeat the process to build a complete dashboard.
+
+---
+
+### Example 1: Login Attempts (Auth Logs)
+
+**SPL Query**
+``spl
+`index=* sourcetype=linux_secure OR sourcetype=linux_auth
+| stats count by user`
+
+- Save → Save As Dashboard Panel
+
+- Choose Existing Dashboard
+
+- Select Kali Security Dashboard
+
+## 2️⃣ Upload Logs
 
 <HEAD
 Go to Settings → Add Data → Upload
@@ -88,25 +133,6 @@ Go to Settings → Add Data → Upload
 
 - Assign a source type (e.g., linux_secure, WinEventLog:Security)
 
-
-## 🔎 Analysis Tasks (Step-by-Step)
-
-### 1️⃣ Understand Log Types
-
-<Identify fields such as:
-- user
-
-- src_ip
-
-- action
-
-- status
-
-- EventCode
-
-- Example SPL:
-
-`index=main | stats count by sourcetype`
 
 ### 2️⃣ Analyze Authentication Logs
 
@@ -140,62 +166,59 @@ Focus on login-related events.
 2. 2️⃣ Analyze Authentication Logs
 
 `Focus on login-related events.`
->>>>>>> 2d12d3007859112b25b31432091bb1a6e7faa2d5
 
-index=main (login OR authentication)
-3️⃣ Identify Failed Logins
-index=main (failed OR failure)
+`index=main `
+(login OR authentication)
+
+3. 3️⃣ Identify Failed Logins
+   
+`index=main (failed OR failure)
 | stats count by user, src_ip
-| sort -count
-4️⃣ Detect Anomalies
+| sort -count`
+
+4. 4️⃣ Detect Anomalies
 
 Detect brute-force or suspicious behavior.
 
-index=main failed
+`index=main failed
 | stats count by src_ip
-| where count > 5
-5️⃣ Correlate Events
+| where count > 5`
+
+5. 5️⃣ Correlate Events
 
 Correlate failed logins followed by successful logins.
 
-index=main
+`index=main
 | transaction user maxspan=10m
-| search failed success
-6️⃣ SIEM Basics in Splunk
+| search failed success`
 
-Use Indexes for log storage
+6. 6️⃣ SIEM Basics in Splunk
 
-Use Search Processing Language (SPL)
+- Use Indexes for log storage
 
-Apply Time-based analysis
+- Use Search Processing Language (SPL)
 
-index=main | timechart count
-7️⃣ Create Alerts
+- Apply Time-based analysis
+
+`index=main | timechart count`
+
+7. 7️⃣ Create Alerts
 
 Example: Alert for multiple failed logins.
 
-index=main failed
+`index=main failed
 | stats count by src_ip
-| where count > 10
+| where count > 10`
 
-Save as Alert
+- Save as Alert
 
-Trigger condition: If result > 0
+- Trigger condition: If result > 0
 
-Action: Log event / Email (optional)
+- Action: Log event / Email (optional)
 
-8️⃣ Document Findings
 
-Capture:
-
-Screenshots of searches
-
-SPL queries used
-
-Security insights
-
-📄 Deliverables
-✅ Log Analysis Report
+# 📄 Deliverables
+# ✅ Log Analysis Report
 
 Include:
 
