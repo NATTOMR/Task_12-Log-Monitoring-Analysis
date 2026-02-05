@@ -57,6 +57,8 @@ You may use any one of the following:
  `sudo /opt/splunk/bin/splunk start`
 - ✔ Accept the license
 - ✔ Set admin username & password
+  
+![image](https://github.com/NATTOMR/Task_12-Log-Monitoring-Analysis-by-using-splunk/blob/main/images/splunk%20start.png)
 
 8. 4️⃣ Enable Splunk at Boot (recommended)
   `sudo /opt/splunk/bin/splunk enable boot-start`
